@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/timebot-app/static/css/main.18781d21.css",
-    "main.js": "/timebot-app/static/js/main.a976d97d.js",
+    "main.css": "/timebot-app/static/css/main.bf5acccf.css",
+    "main.js": "/timebot-app/static/js/main.d6f65ad9.js",
     "static/media/svg": "/timebot-app/static/media/2d82b92e720462f8dd3b.2d82b92e720462f8dd3b.svg",
     "index.html": "/timebot-app/index.html",
-    "main.18781d21.css.map": "/timebot-app/static/css/main.18781d21.css.map",
-    "main.a976d97d.js.map": "/timebot-app/static/js/main.a976d97d.js.map"
+    "main.bf5acccf.css.map": "/timebot-app/static/css/main.bf5acccf.css.map",
+    "main.d6f65ad9.js.map": "/timebot-app/static/js/main.d6f65ad9.js.map"
   },
   "entrypoints": [
-    "static/css/main.18781d21.css",
-    "static/js/main.a976d97d.js"
+    "static/css/main.bf5acccf.css",
+    "static/js/main.d6f65ad9.js"
   ]
 }
