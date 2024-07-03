@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "@telegram-apps/telegram-ui/dist/styles.css";
 
-function App() {
+import { AppRoot, LargeTitle, Text } from "@telegram-apps/telegram-ui";
+import { useEffect, useState } from "react";
+
+export function App() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 300);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppRoot appearance={"light"}>
+      <LargeTitle weight={"1"}>Time is</LargeTitle>
+      <Text>{time.toLocaleString()}</Text>
+    </AppRoot>
   );
 }
-
-export default App;
