@@ -1,22 +1,40 @@
-import "@telegram-apps/telegram-ui/dist/styles.css";
-
-import { AppRoot, LargeTitle, Text } from "@telegram-apps/telegram-ui";
-import { useEffect, useState } from "react";
+import { AppRoot } from "@telegram-apps/telegram-ui";
+import {
+  bindMiniAppCSSVars,
+  bindThemeParamsCSSVars,
+  bindViewportCSSVars,
+  useLaunchParams,
+  useMiniApp,
+  useThemeParams,
+  useViewport,
+} from "@tma.js/sdk-react";
+import { useEffect } from "react";
+import { Time } from "./Time";
 
 export function App() {
-  const [time, setTime] = useState(new Date());
+  const lp = useLaunchParams();
+  const miniApp = useMiniApp();
+  const themeParams = useThemeParams();
+  const viewport = useViewport();
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 300);
-    return () => clearInterval(timer);
-  }, []);
+    return bindMiniAppCSSVars(miniApp, themeParams);
+  }, [miniApp, themeParams]);
+
+  useEffect(() => {
+    return bindThemeParamsCSSVars(themeParams);
+  }, [themeParams]);
+
+  useEffect(() => {
+    return viewport && bindViewportCSSVars(viewport);
+  }, [viewport]);
 
   return (
-    <AppRoot appearance={"light"}>
-      <LargeTitle weight={"1"}>Time is</LargeTitle>
-      <Text>{time.toLocaleString()}</Text>
+    <AppRoot
+      appearance={miniApp.isDark ? "dark" : "light"}
+      platform={["macos", "ios"].includes(lp.platform) ? "ios" : "base"}
+    >
+      <Time />
     </AppRoot>
   );
 }
